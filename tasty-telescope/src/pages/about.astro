@@ -1,15 +1,44 @@
 ---
+interface Props {
+  info: string;
+}
+
+import axios from "axios";
+import dayjs from "dayjs";
+import "dayjs/locale/ja";
+import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
 import Card from "../components/Card.astro";
 import Layout from "../layouts/Layout.astro";
+
+let info = Astro.props;
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+const date = dayjs().tz("Asia/Tokyo").format("YYYY-MM-DD");
+console.log("\nDATE IN JAPAN:", date, "\n");
+
+try {
+  const response = await axios.get(`https://api.jhonatec.com/schedule/${date}`);
+  console.log(response.data);
+  info = response.data;
+} catch (error) {
+  if (error instanceof axios.AxiosError) {
+    console.error(error.response);
+  } else {
+    console.error(error);
+  }
+}
 ---
-<meta>
-  <title>Teste</title>
-  <meta name="description" content="Teste" />
-  <meta name="keywords" content="Teste" />
-  <meta name="author" content="Teste" />
-  <link rel="icon" type="image/svg+xml" href="/avout.svg" />
-  <!-- <link rel="icon" href="/about.svg" type="image/svg+xml"> -->
-</meta>
+
+<meta />
+<title>Teste</title>
+<meta name='description' content='Teste' />
+<meta name='keywords' content='Teste' />
+<meta name='author' content='Teste' />
+<link rel='icon' type='image/svg+xml' href='/avout.svg' />
+<!-- <link rel="icon" href="/about.svg" type="image/svg+xml"> -->
+
 <Layout title='About us'>
   <main>
     <h1>About us</h1>
@@ -21,6 +50,8 @@ import Layout from "../layouts/Layout.astro";
       alt='A team of developers and designers working together.'
       height='300'
     />
+    <h3>Resposta da API:</h3>
+    <pre>{JSON.stringify(info, null, 2)}</pre>
     <ul class='list'>
       <Card
         href='#'
