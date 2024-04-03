@@ -1,0 +1,68 @@
+---
+interface Props {
+  hour: number;
+  idServiceOrder: string | null;
+}
+
+const { hour, idServiceOrder } = Astro.props;
+---
+
+<div class=`hour-card ${idServiceOrder ? 'disable' : ''}`>
+  <h3>{hour} horas</h3>
+  {
+    idServiceOrder ? (
+      <a class="no-cursor-events">
+        Indisponível
+      </a>
+    ) : (
+      <a href={`/service-order/new?hour=${hour}`}>
+        Agendar
+      </a>
+    )
+  }
+</div>
+
+<style>
+
+  .disable {
+    opacity: 0.5;
+    cursor: not-allowed;
+    /* pointer-events: none; */
+  }
+
+  .no-cursor-events {
+    pointer-events: none;
+  }
+
+  .hour-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+  }
+
+  .hour-card h3 {
+    margin: 0.2rem;
+  }
+
+  a {
+    text-decoration: none;
+    transition: all 0.2s;
+    width: 100%;
+    color: rgb(var(--accent-light));
+    padding: .5rem;
+    background-color: #333333;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  a:hover {
+    font-size: large;
+    filter: brightness(1.2);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.316);
+  }
+</style>

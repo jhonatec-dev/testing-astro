@@ -1,6 +1,12 @@
 ---
+interface Schedule {
+  hour: number;
+  idServiceOrder: string | null;
+}
+
 interface Props {
   info: string;
+  schedule: Schedule[];
 }
 
 import axios from "axios";
@@ -9,9 +15,10 @@ import "dayjs/locale/ja";
 import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
 import Card from "../components/Card.astro";
+import HourCard from "../components/HourCard.astro";
 import Layout from "../layouts/Layout.astro";
 
-let info = Astro.props;
+let { info, schedule } = Astro.props;
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
@@ -22,6 +29,7 @@ try {
   const response = await axios.get(`https://api.jhonatec.com/schedule/${date}`);
   console.log(response.data);
   info = response.data;
+  schedule = response.data.schedule;
 } catch (error) {
   if (error instanceof axios.AxiosError) {
     console.error(error.response);
@@ -51,7 +59,13 @@ try {
       height='300'
     />
     <h3>Resposta da API:</h3>
-    <pre>{JSON.stringify(info, null, 2)}</pre>
+    <ul class='list'>
+      {
+        schedule.map((item) => (
+          <HourCard hour={item.hour} idServiceOrder={item.idServiceOrder} />
+        ))
+      }
+    </ul>
     <ul class='list'>
       <Card
         href='#'
