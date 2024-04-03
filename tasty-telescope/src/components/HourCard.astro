@@ -11,19 +11,14 @@ const { hour, idServiceOrder } = Astro.props;
   <h3>{hour} horas</h3>
   {
     idServiceOrder ? (
-      <a class="no-cursor-events">
-        Indisponível
-      </a>
+      <a class='no-cursor-events'>Indisponível</a>
     ) : (
-      <a href={`/service-order/new?hour=${hour}`}>
-        Agendar
-      </a>
+      <a onclick={`alert('Agendado para ${hour} horas!')`}>Agendar</a>
     )
   }
 </div>
 
 <style>
-
   .disable {
     opacity: 0.5;
     cursor: not-allowed;
@@ -54,7 +49,7 @@ const { hour, idServiceOrder } = Astro.props;
     transition: all 0.2s;
     width: 100%;
     color: rgb(var(--accent-light));
-    padding: .5rem;
+    padding: 0.5rem;
     background-color: #333333;
     border-radius: 5px;
     text-align: center;

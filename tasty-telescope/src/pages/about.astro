@@ -22,19 +22,22 @@ let { info, schedule } = Astro.props;
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-const date = dayjs().tz("Asia/Tokyo").format("YYYY-MM-DD");
+// const date = dayjs().tz("Asia/Tokyo").format("YYYY-MM-DD");
+const date = "2024-03-20";
 console.log("\nDATE IN JAPAN:", date, "\n");
 
 try {
   const response = await axios.get(`https://api.jhonatec.com/schedule/${date}`);
-  console.log(response.data);
-  info = response.data;
-  schedule = response.data.schedule;
+  console.log("RESPONSE", response.data);
+  if (response.data) {
+    info = response.data;
+    schedule = response.data.schedule;
+  }
 } catch (error) {
   if (error instanceof axios.AxiosError) {
-    console.error(error.response);
+    console.error("AXIOS ERROR", error.response);
   } else {
-    console.error(error);
+    console.error("COMMOM ERROR", error);
   }
 }
 ---
@@ -59,11 +62,14 @@ try {
       height='300'
     />
     <h3>Resposta da API:</h3>
+    <pre>{JSON.stringify(info ?? "null", null, 2)}</pre>
+    <h3>Renderizado:</h3>
     <ul class='list'>
       {
-        schedule.map((item) => (
-          <HourCard hour={item.hour} idServiceOrder={item.idServiceOrder} />
-        ))
+        schedule &&
+          schedule.map((item) => (
+            <HourCard hour={item.hour} idServiceOrder={item.idServiceOrder} />
+          ))
       }
     </ul>
     <ul class='list'>
