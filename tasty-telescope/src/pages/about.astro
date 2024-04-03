@@ -1,0 +1,48 @@
+---
+import Card from "../components/Card.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title='About us'>
+  <main>
+    <h1>About us</h1>
+    <p>
+      We are a small team of developers and designers who love to build things.
+    </p>
+    <img
+      src='/about.svg'
+      alt='A team of developers and designers working together.'
+      height='300'
+    />
+    <ul class='list'>
+      <Card
+        href='#'
+        title='Our mission'
+        body='Our mission is to build the best products for our customers.'
+      />
+      <Card href='/' title='Home' body='Go back to the main page.' />
+    </ul>
+  </main>
+</Layout>
+<style>
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+    color: rgb(228, 228, 228);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  h1 {
+    margin-bottom: 1rem;
+  }
+  .list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    padding: 0;
+    gap: 1rem;
+    width: 100%;
+  }
+</style>
