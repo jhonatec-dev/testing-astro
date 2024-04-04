@@ -15,21 +15,23 @@ interface Posts {
 export async function getStaticPaths() {
   const allPosts = (await Astro.glob("../posts/*.md")) as Posts[];
 
-  return [
-    { params: { tag: "astro" }, props: { posts: allPosts } },
-    { params: { tag: "successes" }, props: { posts: allPosts } },
-    { params: { tag: "community" }, props: { posts: allPosts } },
-    { params: { tag: "blogging" }, props: { posts: allPosts } },
-    { params: { tag: "setbacks" }, props: { posts: allPosts } },
-    { params: { tag: "learning in public" }, props: { posts: allPosts } },
+  const uniqueTags = [
+    ...new Set(allPosts.flatMap((post) => post.frontmatter.tags)),
   ];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) =>
+      post.frontmatter.tags.includes(tag)
+    );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
 }
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
-const filteredPosts = posts.filter((post) =>
-  post.frontmatter.tags?.includes(tag)
-);
 ---
 
 <Layout title={tag}>
@@ -37,9 +39,9 @@ const filteredPosts = posts.filter((post) =>
     <header>
       <h3>Posts tagged with "{tag}"</h3>
     </header>
-    <ul class="list">
+    <ul class='list'>
       {
-        filteredPosts.map((post) => (
+        posts.map((post) => (
           <Card
             title={post.frontmatter.title}
             href={post.url}
