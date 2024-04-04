@@ -23,6 +23,23 @@ main {
   width: 100%;
 }
 
+header {
+  background-image: var(--accent-gradient);
+  background-position: 10%;
+  background-size: 400%;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+    sans-serif;
+  color: rgb(var(--accent-dark));
+  border-radius: 5px;
+}
+
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 a {
   color: white;
   text-decoration: none;
