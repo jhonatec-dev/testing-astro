@@ -14,7 +14,6 @@ const { frontmatter } = Astro.props;
         <p>
           Published on: {
             dayjs(frontmatter.pubDate)
-              .tz("America/Sao_Paulo")
               .format("YYYY-MM-DD HH:mm")
           }
         </p>
