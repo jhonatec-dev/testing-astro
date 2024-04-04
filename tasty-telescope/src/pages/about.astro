@@ -15,6 +15,7 @@ import "dayjs/locale/ja";
 import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
 import Card from "../components/Card.astro";
+import CardHome from "../components/CardHome.astro";
 import HourCard from "../components/HourCard.astro";
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
@@ -79,7 +80,7 @@ try {
         title='Our mission'
         body='Our mission is to build the best products for our customers.'
       />
-      <Card href='/' title='Home' body='Go back to the main page.' />
+      <CardHome />
     </ul>
   </main>
 </Layout>

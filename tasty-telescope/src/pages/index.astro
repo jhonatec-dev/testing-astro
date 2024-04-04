@@ -1,7 +1,7 @@
 ---
 import Card from "../components/Card.astro";
 import Layout from "../layouts/Layout.astro";
-import '../styles/global.css';
+import "../styles/global.css";
 ---
 
 <Layout title='Welcome to Jhonatec'>
@@ -51,11 +51,12 @@ import '../styles/global.css';
         title='About'
         body='Learn more about Jhonatec and the team behind the company.'
       />
-      <Card 
-        href="/blog"
-        title="Blog"
-        body="Read the latest articles from the Jhonatec team."
+      <Card
+        href='/blog'
+        title='Blog'
+        body='Read the latest articles from the Jhonatec team.'
       />
+      <Card href='/tags' title='Tags' body='Browse articles by tag.' />
     </ul>
   </main>
 </Layout>

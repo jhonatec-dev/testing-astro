@@ -1,5 +1,6 @@
 ---
 import Card from "../components/Card.astro";
+import CardHome from "../components/CardHome.astro";
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 
@@ -9,7 +10,10 @@ const allPosts = await Astro.glob("../pages/posts/*.md");
 
 <Layout title='Archive'>
   <main>
-    <h1>Archive</h1>
+    <header>
+      <h1>Archive</h1>
+      <p>Look my latest posts!</p>
+    </header>
     <ul class='list'>
       <!-- Loop over all posts -->
       {
@@ -21,11 +25,7 @@ const allPosts = await Astro.glob("../pages/posts/*.md");
           />
         ))
       }
-      <Card 
-        title="Main Page"
-        href="/"
-        body="Go back to the main page"
-      />
+      <CardHome />
     </ul>
   </main>
 </Layout>

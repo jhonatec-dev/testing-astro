@@ -1,0 +1,32 @@
+---
+import Card from "../../components/Card.astro";
+import CardHome from "../../components/CardHome.astro";
+import Layout from "../../layouts/Layout.astro";
+const allPosts = await Astro.glob("../posts/*.md");
+const tags = [
+  ...new Set(allPosts.flatMap((post) => post.frontmatter.tags)),
+].sort();
+---
+
+<Layout title='Posts by Tag'>
+  <main>
+    <header>
+      <h1>Posts by Tag</h1>
+      <p>Look how many tags we have here!</p>
+    </header>
+    <section>
+      <ul class='list'>
+        {
+          tags.map((tag) => (
+            <Card
+              href={`/tags/${tag}`}
+              title={tag}
+              body={`Posts tagged with ${tag}`}
+            />
+          ))
+        }
+        <CardHome />
+      </ul>
+    </section>
+  </main>
+</Layout>
