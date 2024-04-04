@@ -1,6 +1,7 @@
 ---
 import Card from "../components/Card.astro";
 import Layout from "../layouts/Layout.astro";
+import '../styles/global.css';
 ---
 
 <Layout title='Welcome to Jhonatec'>
@@ -51,7 +52,7 @@ import Layout from "../layouts/Layout.astro";
         body='Learn more about Jhonatec and the team behind the company.'
       />
       <Card 
-        href="/posts/post-1"
+        href="/blog"
         title="Blog"
         body="Read the latest articles from the Jhonatec team."
       />
@@ -60,15 +61,6 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style>
-  main {
-    margin: auto;
-    padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 2rem);
-    color: white;
-    font-size: 20px;
-    line-height: 1.6;
-  }
   .astro-a {
     position: absolute;
     top: -32px;

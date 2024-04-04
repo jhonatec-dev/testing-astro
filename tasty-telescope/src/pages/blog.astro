@@ -1,0 +1,26 @@
+---
+import Card from "../components/Card.astro";
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+
+// Get all posts
+const allPosts = await Astro.glob("../pages/posts/*.md");
+---
+
+<Layout title='Archive'>
+  <main>
+    <h1>Archive</h1>
+    <ul class='list'>
+      <!-- Loop over all posts -->
+      {
+        allPosts.map((post) => (
+          <Card
+            title={post.frontmatter.title}
+            href={post.url ?? "#"}
+            body={post.frontmatter.description}
+          />
+        ))
+      }
+    </ul>
+  </main>
+</Layout>

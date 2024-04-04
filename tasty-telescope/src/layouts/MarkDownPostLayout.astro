@@ -1,12 +1,47 @@
 ---
 import dayjs from "dayjs";
+import Card from "../components/Card.astro";
+import Layout from "./Layout.astro";
 
 const { frontmatter } = Astro.props;
 ---
-<h1>{frontmatter.title}</h1>
-<p>Published on: {dayjs(frontmatter.pubDate).tz('America/Sao_Paulo').format("YYYY-MM-DD")}</p>
-<p>Written by {frontmatter.author}</p>
-<slot />
-<div>
-  Footer
-</div>
+
+<Layout title={frontmatter.title}>
+  <main>
+    <article>
+      <header>
+        <h1>{frontmatter.title}</h1>
+        <p>
+          Published on: {
+            dayjs(frontmatter.pubDate)
+              .tz("America/Sao_Paulo")
+              .format("YYYY-MM-DD HH:mm")
+          }
+        </p>
+        <p>Written by {frontmatter.author}</p>
+      </header>
+      <slot />
+      <hr />
+      <Card title='Go back' href='/blog' body='Go back to the blog page' />
+    </article>
+  </main>
+</Layout>
+
+<style>
+  header {
+    background-image: var(--accent-gradient);
+    background-position: 10%;
+    background-size: 400%;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+    color: rgb(var(--accent-dark));
+    border-radius: 5px;
+  }
+
+  hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+</style>
