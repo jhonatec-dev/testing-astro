@@ -12,10 +12,12 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
+    "@astrojs/preact": "^3.1.2",
     "@astrojs/rss": "^4.0.5",
     "astro": "^4.5.14",
     "axios": "^1.6.8",
     "dayjs": "^1.11.10",
+    "preact": "^10.20.1",
     "typescript": "^5.4.3"
   },
   "devDependencies": {
