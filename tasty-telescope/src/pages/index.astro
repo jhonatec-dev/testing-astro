@@ -1,5 +1,6 @@
 ---
 import Card from "../components/Card.astro";
+import Greeting from "../components/Greeting";
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 ---
@@ -40,6 +41,7 @@ import "../styles/global.css";
       />
       <strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
     </p>
+    <Greeting client:load messages={['Hello', 'Hi', 'Hey', 'Welcome']} />
     <ul role='list' class='link-card-grid'>
       <Card
         href='https://jhonatec.com'

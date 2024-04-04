@@ -64,3 +64,13 @@ li {
 li::marker {
   color: rgb(var(--accent-light));
 }
+
+/* Dark theme */
+html.dark {
+  background-color: #0d0950;
+  color: #fff;
+}
+
+.dark .nav-links a {
+  color: #fff;
+}
