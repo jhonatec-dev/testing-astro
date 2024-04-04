@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
+    "@astrojs/rss": "^4.0.5",
     "astro": "^4.5.14",
     "axios": "^1.6.8",
     "dayjs": "^1.11.10",
