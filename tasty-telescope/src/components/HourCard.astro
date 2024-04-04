@@ -6,7 +6,7 @@ interface Props {
 
 const { hour, idServiceOrder } = Astro.props;
 
-const borderColor = '#ccc';
+const borderColor = "#ccc";
 ---
 
 <div class=`hour-card ${idServiceOrder ? 'disable' : ''}`>
@@ -20,7 +20,7 @@ const borderColor = '#ccc';
   }
 </div>
 
-<style define:vars={{borderColor}}>
+<style define:vars={{ borderColor }}>
   .disable {
     opacity: 0.5;
     cursor: not-allowed;
@@ -47,7 +47,6 @@ const borderColor = '#ccc';
   }
 
   a {
-    text-decoration: none;
     transition: all 0.2s;
     width: 100%;
     color: rgb(var(--accent-light));
@@ -58,8 +57,7 @@ const borderColor = '#ccc';
   }
 
   a:hover {
-    font-size: large;
-    filter: brightness(1.2);
-    box-shadow: 0 0 4px rgba(255, 255, 255, 0.316);
+    text-decoration: none;
+    cursor: pointer;
   }
 </style>

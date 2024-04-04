@@ -22,3 +22,17 @@ main {
   gap: 1rem;
   width: 100%;
 }
+
+a {
+  color: white;
+  text-decoration: none;
+  font-style: italic;
+  font-weight: 100;
+  transition: all 350ms;
+}
+
+a:hover {
+  text-decoration: underline 1px rgb(var(--accent-light));
+  color: rgb(var(--accent-light));
+  font-weight: 400;
+}
