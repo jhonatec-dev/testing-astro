@@ -13,11 +13,21 @@
   "dependencies": {
     "@astrojs/check": "^0.5.10",
     "@astrojs/preact": "^3.1.2",
+    "@astrojs/react": "^3.1.1",
     "@astrojs/rss": "^4.0.5",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@fontsource/roboto": "^5.0.12",
+    "@mui/icons-material": "^5.15.15",
+    "@mui/material": "^5.15.15",
+    "@types/react": "^18.2.74",
+    "@types/react-dom": "^18.2.24",
     "astro": "^4.5.14",
     "axios": "^1.6.8",
     "dayjs": "^1.11.10",
     "preact": "^10.20.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "typescript": "^5.4.3"
   },
   "devDependencies": {
