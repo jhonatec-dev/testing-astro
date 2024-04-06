@@ -30,3 +30,31 @@ Para conseguir ter o apoio da IDE para arquivos astro, baixe a extensão
 Agora os arquivos ficam desse jeito:
 
 ![Print do código](/README/code2.png "Print do código")
+
+## Observações
+
+- Astro não consegue executar os componentes de MUI (Material UI) por causa das dependências das libs `Emotion` por exemplo
+- É preciso configurar padrões de filenames no arquivo `astro.config.mjs` quando usar múltiplas integrações como Preact + React por exemplo:
+
+---
+
+```js
+export default defineConfig({
+  site: "https://astro.jhonatec.dev",
+  integrations: [
+    react({
+      include: /(?!\.preact)\.[j,t]sx$/,
+    }),
+    preact({
+      include: /\.preact\.jsx$/,
+    }),
+    tailwind(),
+  ],
+  output: "server",
+  adapter: vercel(),
+});
+```
+
+>
+> ### ⚠️ Obs - Ainda estou testando o Regex acima ⚠️
+>

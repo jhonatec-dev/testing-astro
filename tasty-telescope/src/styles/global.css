@@ -74,3 +74,11 @@ html.dark {
 .dark .nav-links a {
   color: #fff;
 }
+
+.swal2-popup {
+  background-color: rgb(var(--accent-dark));
+  color: #fff;
+  border: 1px solid #ffffff63;
+  position: absolute;
+  top: 0%;
+}
